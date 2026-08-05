@@ -1,4 +1,4 @@
-/* ── Landing page ─────────────────────────────────────── */
+
 .lp-hero {
   background: radial-gradient(circle at 85% 10%, #17253e 0%, var(--ink) 55%);
   color: white;
@@ -43,7 +43,7 @@
 .lp-hero-note { margin-top: 28px; font-size: 13px; color: rgba(255,255,255,0.45); }
 .lp-hero-note code { font-family: var(--font-mono); background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: rgba(255,255,255,0.75); }
 
-/* ── Match visualization (signature element) ─────────── */
+
 .lp-match { display: flex; flex-direction: column; align-items: stretch; gap: 0; position: relative; }
 .lp-demo-card {
   background: var(--ink-soft); border: 1px solid var(--line); border-radius: 14px;
@@ -73,7 +73,7 @@
 .lp-score-percent { font-family: var(--font-mono); font-weight: 700; font-size: 15px; color: var(--signal); }
 .lp-score-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-left: 8px; }
 
-/* ── Sections on paper background ────────────────────── */
+
 .lp-section { max-width: 1180px; margin: 0 auto; padding: 72px 32px; }
 .lp-section-head { max-width: 560px; margin-bottom: 40px; }
 .lp-section-head .lp-kicker { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--spark-dark); margin-bottom: 10px; display: block; }

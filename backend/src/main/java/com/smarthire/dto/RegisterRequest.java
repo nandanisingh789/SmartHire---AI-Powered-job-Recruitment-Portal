@@ -7,7 +7,7 @@ public class RegisterRequest {
     private String name;
     private String email;
     private String password;
-    private String role; // ADMIN, RECRUITER, CANDIDATE
+    private String role;
     private String skills;
     private Integer experienceYears;
     private String location;

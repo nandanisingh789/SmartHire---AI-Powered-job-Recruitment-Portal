@@ -19,7 +19,7 @@ public class ApplicationController {
     @Autowired
     private ApplicationService applicationService;
 
-    // Candidate: apply to a job
+
     @PostMapping("/apply")
     @PreAuthorize("hasRole('CANDIDATE')")
     public ResponseEntity<?> apply(@RequestBody ApplyRequest req, Principal principal) {
@@ -31,28 +31,27 @@ public class ApplicationController {
         }
     }
 
-    // Candidate: my applications
+
     @GetMapping("/my")
     @PreAuthorize("hasRole('CANDIDATE')")
     public ResponseEntity<List<ApplicationResponse>> myApplications(Principal principal) {
         return ResponseEntity.ok(applicationService.getMyApplications(principal.getName()));
     }
 
-    // Recruiter: all applications for my jobs
+
     @GetMapping("/recruiter/all")
     @PreAuthorize("hasRole('RECRUITER')")
     public ResponseEntity<List<ApplicationResponse>> recruiterApplications(Principal principal) {
         return ResponseEntity.ok(applicationService.getApplicationsForRecruiter(principal.getName()));
     }
 
-    // Recruiter: applications for specific job
+
     @GetMapping("/recruiter/job/{jobId}")
     @PreAuthorize("hasRole('RECRUITER')")
     public ResponseEntity<List<ApplicationResponse>> jobApplications(@PathVariable Long jobId) {
         return ResponseEntity.ok(applicationService.getApplicationsForJob(jobId));
     }
 
-    // Recruiter: update application status
     @PutMapping("/recruiter/update/{appId}")
     @PreAuthorize("hasRole('RECRUITER')")
     public ResponseEntity<?> updateStatus(@PathVariable Long appId,
@@ -64,7 +63,7 @@ public class ApplicationController {
         }
     }
 
-    // Admin: all applications
+
     @GetMapping("/admin/all")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<ApplicationResponse>> allApplications() {

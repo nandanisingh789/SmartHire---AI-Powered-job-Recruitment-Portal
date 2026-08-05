@@ -28,22 +28,22 @@ public class Application {
     @Column(nullable = false)
     private ApplicationStatus status;
 
-    // AI Match Score (0-100)
+
     @Column
     private Integer matchScore;
 
-    // AI Predicted Salary
+
     @Column(length = 50)
     private String predictedSalary;
 
     @Column(length = 1000)
     private String coverLetter;
 
-    // Resume uploaded skills (candidate can edit before submitting)
+
     @Column(length = 500)
     private String resumeSkills;
 
-    // Resume file name (stored for display)
+
     @Column(length = 200)
     private String resumeFileName;
 

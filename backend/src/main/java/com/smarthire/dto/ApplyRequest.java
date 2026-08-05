@@ -6,6 +6,6 @@ import lombok.Data;
 public class ApplyRequest {
     private Long jobId;
     private String coverLetter;
-    private String resumeSkills;    // skills parsed/edited from resume
-    private String resumeFileName;  // just the file name for display
+    private String resumeSkills;
+    private String resumeFileName;
 }

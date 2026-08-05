@@ -24,7 +24,7 @@ public class AdminController {
     @Autowired private JobRepository jobRepository;
     @Autowired private ApplicationRepository applicationRepository;
 
-    // Dashboard stats
+
     @GetMapping("/stats")
     public ResponseEntity<Map<String, Object>> getStats() {
         Map<String, Object> stats = new HashMap<>();
@@ -38,7 +38,6 @@ public class AdminController {
         return ResponseEntity.ok(stats);
     }
 
-    // All users
     @GetMapping("/users")
     public ResponseEntity<?> getAllUsers() {
         List<Map<String, Object>> users = userRepository.findAll().stream().map(u -> {
@@ -55,7 +54,7 @@ public class AdminController {
         return ResponseEntity.ok(users);
     }
 
-    // Delete user
+
     @DeleteMapping("/users/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         try {

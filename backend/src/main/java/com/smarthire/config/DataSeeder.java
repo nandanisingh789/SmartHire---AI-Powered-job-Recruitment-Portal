@@ -18,10 +18,9 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Only seed if no users exist
+
         if (userRepository.count() > 0) return;
 
-        // Admin
         User admin = User.builder()
                 .name("Admin User")
                 .email("admin@smarthire.com")
@@ -30,7 +29,6 @@ public class DataSeeder implements CommandLineRunner {
                 .location("Delhi")
                 .build();
 
-        // Recruiter
         User recruiter = User.builder()
                 .name("Rahul Recruiter")
                 .email("recruiter@smarthire.com")
@@ -39,7 +37,6 @@ public class DataSeeder implements CommandLineRunner {
                 .location("Noida")
                 .build();
 
-        // Candidate
         User candidate = User.builder()
                 .name("Priya Candidate")
                 .email("candidate@smarthire.com")
@@ -55,7 +52,6 @@ public class DataSeeder implements CommandLineRunner {
         userRepository.save(recruiter);
         userRepository.save(candidate);
 
-        // Sample Jobs
         Job job1 = Job.builder()
                 .title("Java Backend Developer")
                 .company("Nagarro")
@@ -99,7 +95,7 @@ public class DataSeeder implements CommandLineRunner {
         jobRepository.save(job2);
         jobRepository.save(job3);
 
-        // More realistic jobs
+
         Job job4 = Job.builder().title("Senior Java Developer").company("TCS").location("Noida, UP")
                 .description("Senior Java developer for large-scale enterprise applications using Spring Boot microservices.")
                 .requiredSkills("Java,Spring Boot,Microservices,MySQL,REST API,Hibernate")

@@ -20,7 +20,7 @@ public class JobController {
     @Autowired
     private JobService jobService;
 
-    // Public - all active jobs (paginated)
+
     @GetMapping("/all")
     public ResponseEntity<?> getAllJobs(
             @RequestParam(defaultValue = "0") int page,
@@ -28,13 +28,13 @@ public class JobController {
         return ResponseEntity.ok(jobService.getActiveJobsPaginated(page, size));
     }
 
-    // Public - search
+
     @GetMapping("/search")
     public ResponseEntity<List<JobResponse>> searchJobs(@RequestParam String keyword) {
         return ResponseEntity.ok(jobService.searchJobs(keyword));
     }
 
-    // Public - single job
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getJob(@PathVariable Long id) {
         try {
@@ -44,7 +44,7 @@ public class JobController {
         }
     }
 
-    // Recruiter - post job
+
     @PostMapping("/recruiter/post")
     @PreAuthorize("hasRole('RECRUITER')")
     public ResponseEntity<?> postJob(@RequestBody JobRequest req, Principal principal) {
@@ -56,14 +56,13 @@ public class JobController {
         }
     }
 
-    // Recruiter - my posted jobs
     @GetMapping("/recruiter/my-jobs")
     @PreAuthorize("hasRole('RECRUITER')")
     public ResponseEntity<List<JobResponse>> getMyJobs(Principal principal) {
         return ResponseEntity.ok(jobService.getMyJobs(principal.getName()));
     }
 
-    // Recruiter - close job
+
     @PutMapping("/recruiter/close/{id}")
     @PreAuthorize("hasRole('RECRUITER')")
     public ResponseEntity<?> closeJob(@PathVariable Long id, Principal principal) {
@@ -74,7 +73,7 @@ public class JobController {
         }
     }
 
-    // Admin - all jobs
+
     @GetMapping("/admin/all")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<JobResponse>> adminAllJobs() {

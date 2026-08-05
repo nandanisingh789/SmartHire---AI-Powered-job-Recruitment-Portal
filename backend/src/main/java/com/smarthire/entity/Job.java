@@ -31,16 +31,16 @@ public class Job {
     private String description;
 
     @Column(nullable = false, length = 500)
-    private String requiredSkills; // comma separated e.g. "Java,Spring Boot,MySQL"
+    private String requiredSkills;
 
     @Column
     private Integer minExperience;
 
     @Column(length = 50)
-    private String jobType; // Full-time, Part-time, Remote
+    private String jobType;
 
     @Column(length = 50)
-    private String salary; // e.g. "6-10 LPA"
+    private String salary;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -63,7 +63,7 @@ public class Job {
         ACTIVE, CLOSED
     }
 
-    // Helper: get required skills as list
+
     public List<String> getRequiredSkillList() {
         if (requiredSkills == null || requiredSkills.isEmpty()) return List.of();
         return Arrays.asList(requiredSkills.toLowerCase().split(","));

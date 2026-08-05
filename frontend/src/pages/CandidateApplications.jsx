@@ -29,7 +29,7 @@ export default function CandidateApplications() {
 
   const toggle = (id) => setExpanded(prev => prev === id ? null : id);
 
-  // summary stats
+  
   const stats = {
     total:       apps.length,
     shortlisted: apps.filter(a => a.status === 'SHORTLISTED').length,

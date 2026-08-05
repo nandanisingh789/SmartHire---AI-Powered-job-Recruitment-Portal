@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import API from '../api/axios';
 import { useAuth } from '../context/AuthContext';
 
-// ── helpers ──────────────────────────────────────────────
+
 const scoreClass = (s) =>
   s >= 80 ? 'score-excellent' : s >= 60 ? 'score-good' : s >= 40 ? 'score-average' : 'score-low';
 const scoreEmoji = (s) => (s >= 80 ? '🌟' : s >= 60 ? '✅' : s >= 40 ? '⚠️' : '❌');
@@ -13,7 +13,7 @@ const scoreLabel = (s) =>
   : s >= 40 ? 'Average Match — Consider upskilling'
   : 'Low Match — Skill gap detected';
 
-// Naive resume text → skills extractor
+
 const KNOWN_SKILLS = [
   'java','spring boot','spring','hibernate','mysql','postgresql','react','javascript',
   'html','css','rest api','node.js','nodejs','python','git','docker','aws','mongodb',
@@ -26,12 +26,12 @@ function extractSkillsFromText(text) {
     .map(s => s.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '));
 }
 
-// ── component ────────────────────────────────────────────
+
 export default function Jobs() {
   const { user } = useAuth();
   const navigate  = useNavigate();
 
-  // jobs list + pagination
+
   const [jobs, setJobs]         = useState([]);
   const [page, setPage]         = useState(0);
   const [hasMore, setHasMore]   = useState(true);
@@ -39,9 +39,7 @@ export default function Jobs() {
   const [loading, setLoading]   = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [keyword, setKeyword]   = useState('');
-  const [searchMode, setSearchMode] = useState(false);
-
-  // apply modal
+  const [searchMode, setSearchMode] = useState(false)
   const [selectedJob, setSelectedJob] = useState(null);
   const [step, setStep]         = useState('form'); // 'form' | 'result'
   const [form, setForm]         = useState({ coverLetter: '', resumeSkills: '', resumeFileName: '' });
@@ -52,7 +50,7 @@ export default function Jobs() {
   const [applyResult, setApplyResult] = useState(null);
   const [applyErr, setApplyErr] = useState('');
 
-  // ── fetch jobs ───────────────────────────────────────
+
   const fetchJobs = useCallback(async (pg = 0, reset = true) => {
     reset ? setLoading(true) : setLoadingMore(true);
     try {
@@ -83,7 +81,7 @@ export default function Jobs() {
 
   const handleReset = () => { setKeyword(''); setSearchMode(false); fetchJobs(0, true); };
 
-  // ── open apply modal ─────────────────────────────────
+  
   const openApply = (job) => {
     if (!user) { navigate('/login'); return; }
     if (user.role !== 'CANDIDATE') return;
@@ -101,7 +99,7 @@ export default function Jobs() {
 
   const closeModal = () => { setSelectedJob(null); setStep('form'); };
 
-  // ── resume file upload ───────────────────────────────
+  
   const handleResumeUpload = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -116,11 +114,11 @@ export default function Jobs() {
       setEditingSkills(skillStr);
       setForm(f => ({ ...f, resumeSkills: skillStr, resumeFileName: file.name }));
     };
-    // Read as text (works for .txt; for .pdf it reads raw bytes — still extracts keywords)
+    
     reader.readAsText(file);
   };
 
-  // ── submit application ───────────────────────────────
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setApplying(true); setApplyErr('');
@@ -139,7 +137,7 @@ export default function Jobs() {
     } finally { setApplying(false); }
   };
 
-  // ── UI ───────────────────────────────────────────────
+
   return (
     <div className="page">
       {/* Header */}
@@ -238,7 +236,7 @@ export default function Jobs() {
   );
 }
 
-// ── Job Card ────────────────────────────────────────────
+
 function JobCard({ job, user, onApply, onLogin }) {
   const timeAgo = (dt) => {
     if (!dt) return '';
@@ -311,7 +309,7 @@ function JobCard({ job, user, onApply, onLogin }) {
   );
 }
 
-// ── Apply Form Modal Content ─────────────────────────────
+
 function ApplyForm({ job, form, setForm, editingSkills, setEditingSkills,
   parsedSkills, onResumeUpload, onSubmit, applying, error, onClose }) {
 
@@ -436,7 +434,7 @@ function ApplyForm({ job, form, setForm, editingSkills, setEditingSkills,
   );
 }
 
-// ── Result Screen ────────────────────────────────────────
+
 function ResultScreen({ result, job, onClose, onMyApps }) {
   const s = result?.matchScore ?? 0;
 

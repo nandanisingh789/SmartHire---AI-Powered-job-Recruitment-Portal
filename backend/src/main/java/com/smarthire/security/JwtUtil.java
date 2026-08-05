@@ -24,7 +24,7 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    // Generate token for user
+
     public String generateToken(UserDetails userDetails, String role) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("role", role);
@@ -37,7 +37,7 @@ public class JwtUtil {
                 .compact();
     }
 
-    // Extract email from token
+
     public String extractEmail(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSigningKey())
@@ -47,7 +47,7 @@ public class JwtUtil {
                 .getSubject();
     }
 
-    // Validate token
+
     public boolean validateToken(String token, UserDetails userDetails) {
         try {
             String email = extractEmail(token);

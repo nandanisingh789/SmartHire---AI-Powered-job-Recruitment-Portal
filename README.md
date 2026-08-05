@@ -9,7 +9,7 @@
 ---
 
 ## Project Structure
-```
+
 smarthire/
 ├── backend/          ← Spring Boot Maven Project (open in Eclipse)
 └── frontend/         ← React Vite Project (run via terminal)

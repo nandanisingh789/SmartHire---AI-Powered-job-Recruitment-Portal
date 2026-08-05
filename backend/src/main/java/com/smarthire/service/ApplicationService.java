@@ -33,12 +33,10 @@ public class ApplicationService {
             throw new RuntimeException("You have already applied to this job!");
         }
 
-        // ---- AI FEATURES ----
-        // If candidate submitted resume skills, use those for matching
-        // Otherwise fallback to profile skills
+
         User aiCandidate = candidate;
         if (req.getResumeSkills() != null && !req.getResumeSkills().isBlank()) {
-            // Temporarily set resume skills for AI calculation
+
             aiCandidate = User.builder()
                     .skills(req.getResumeSkills())
                     .experienceYears(candidate.getExperienceYears())
@@ -46,7 +44,7 @@ public class ApplicationService {
         }
         int matchScore = aiService.calculateMatchScore(aiCandidate, job);
         String predictedSalary = aiService.predictSalary(aiCandidate, job);
-        // ---------------------
+
 
         Application application = Application.builder()
                 .job(job)
@@ -62,7 +60,7 @@ public class ApplicationService {
         return mapToResponse(applicationRepository.save(application));
     }
 
-    // Candidate: my applications
+
     public List<ApplicationResponse> getMyApplications(String candidateEmail) {
         User candidate = userRepository.findByEmail(candidateEmail)
                 .orElseThrow(() -> new RuntimeException("Candidate not found"));
@@ -70,7 +68,7 @@ public class ApplicationService {
                 .stream().map(this::mapToResponse).collect(Collectors.toList());
     }
 
-    // Recruiter: applications for my jobs
+
     public List<ApplicationResponse> getApplicationsForRecruiter(String recruiterEmail) {
         User recruiter = userRepository.findByEmail(recruiterEmail)
                 .orElseThrow(() -> new RuntimeException("Recruiter not found"));
@@ -78,7 +76,7 @@ public class ApplicationService {
                 .stream().map(this::mapToResponse).collect(Collectors.toList());
     }
 
-    // Recruiter: applications for a specific job
+
     public List<ApplicationResponse> getApplicationsForJob(Long jobId) {
         Job job = jobRepository.findById(jobId)
                 .orElseThrow(() -> new RuntimeException("Job not found"));
@@ -86,7 +84,7 @@ public class ApplicationService {
                 .stream().map(this::mapToResponse).collect(Collectors.toList());
     }
 
-    // Recruiter: update status
+
     public ApplicationResponse updateStatus(Long appId, String status) {
         Application app = applicationRepository.findById(appId)
                 .orElseThrow(() -> new RuntimeException("Application not found"));
@@ -94,7 +92,7 @@ public class ApplicationService {
         return mapToResponse(applicationRepository.save(app));
     }
 
-    // Admin: all applications
+
     public List<ApplicationResponse> getAllApplications() {
         return applicationRepository.findAll()
                 .stream().map(this::mapToResponse).collect(Collectors.toList());

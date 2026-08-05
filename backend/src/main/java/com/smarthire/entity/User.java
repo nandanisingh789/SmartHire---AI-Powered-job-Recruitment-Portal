@@ -31,9 +31,9 @@ public class User {
     @Column(nullable = false)
     private Role role;
 
-    // Candidate specific fields
+
     @Column(length = 500)
-    private String skills; // comma separated e.g. "Java,Spring Boot,MySQL,React"
+    private String skills;
 
     @Column
     private Integer experienceYears;
@@ -56,7 +56,6 @@ public class User {
         ADMIN, RECRUITER, CANDIDATE
     }
 
-    // Helper: get skills as list
     public List<String> getSkillList() {
         if (skills == null || skills.isEmpty()) return List.of();
         return Arrays.asList(skills.toLowerCase().split(","));
