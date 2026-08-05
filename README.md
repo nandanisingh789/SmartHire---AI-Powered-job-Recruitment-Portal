@@ -6,66 +6,18 @@
 - **Database:** MySQL 8
 - **AI Features:** Pure Java — Match Score Algorithm + Salary Predictor
 
----
+
 
 ## Project Structure
 
 smarthire/
 ├── backend/          ← Spring Boot Maven Project (open in Eclipse)
 └── frontend/         ← React Vite Project (run via terminal)
-```
 
----
 
-## ⚙️ STEP 1 — Setup MySQL Database
 
-1. Open **MySQL Workbench** or any MySQL client
-2. Run this command:
-   ```sql
-   CREATE DATABASE smarthire_db;
-   ```
-3. Open `backend/src/main/resources/application.properties`
-4. Set your MySQL credentials:
-   ```
-   spring.datasource.username=root
-   spring.datasource.password=YOUR_MYSQL_PASSWORD
-   ```
-   (Default is `root` / `root` — change if different)
 
----
-
-## ⚙️ STEP 2 — Run Backend in Eclipse
-
-1. Open **Eclipse IDE** (Spring Tools Suite preferred)
-2. Go to **File → Import → Maven → Existing Maven Projects**
-3. Browse to the `smarthire/backend` folder → Click **Finish**
-4. Wait for Maven to download dependencies (2-3 mins first time)
-5. Open `SmartHireApplication.java`
-6. Right-click → **Run As → Spring Boot App**
-7. Backend starts on `http://localhost:8080`
-
-✅ You will see in console:
-```
-SmartHire Backend Started on port 8080
-Demo data seeded successfully!
-```
-
----
-
-## ⚙️ STEP 3 — Run Frontend
-
-Open a terminal/command prompt:
-```bash
-cd smarthire/frontend
-npm install
-npm run dev
-```
-
-Frontend starts on `http://localhost:5173`
-
----
-
-## 🔑 Demo Login Credentials
+ 🔑 Demo Login Credentials
 
 | Role      | Email                      | Password    |
 |-----------|----------------------------|-------------|
@@ -116,16 +68,13 @@ Frontend starts on `http://localhost:5173`
 - `GET /api/admin/stats` — Dashboard stats
 - `GET /api/admin/users` — All users
 - `DELETE /api/admin/users/{id}` — Delete user
+<img width="1888" height="906" alt="Screenshot 2026-08-05 113520" src="https://github.com/user-attachments/assets/ec75ce89-e13b-4ff3-9a10-0d643d4b7da2" />
+<img width="1907" height="910" alt="Screenshot 2026-08-05 113536" src="https://github.com/user-attachments/assets/9ee1e376-b1df-483d-8e0e-740413fa5d8a" />
+<img width="1890" height="896" alt="Screenshot 2026-08-05 113553" src="https://github.com/user-attachments/assets/840e6867-cacc-4fe8-b352-7b169a51eebe" />
+<img width="1888" height="892" alt="Screenshot 2026-08-05 113613" src="https://github.com/user-attachments/assets/9b82e1b9-f64a-43b5-b8a5-d79f207a6d1c" />
+<img width="1883" height="900" alt="Screenshot 2026-08-05 113655" src="https://github.com/user-attachments/assets/325ba1b3-f6b1-4479-9e11-905dbb58b063" />
+<img width="1876" height="897" alt="Screenshot 2026-08-05 113715" src="https://github.com/user-attachments/assets/e7d5d751-e155-4bbf-b8d1-fe7f190a2579" />
+<img width="1877" height="897" alt="Screenshot 2026-08-05 113752" src="https://github.com/user-attachments/assets/7a21776c-1a11-4099-9205-7d4d71f0c768" />
 
----
 
-## Resume Description (Copy This!)
 
-> **SmartHire — AI-Powered Job Recruitment Portal**
-> *Java 17 | Spring Boot 3 | Hibernate | MySQL | REST API | React | JWT | MVC Pattern*
->
-> Developed a full-stack job portal with role-based access for Admin, Recruiter, and Candidate.
-> Implemented AI-based candidate-job skill matching algorithm (Java Set intersection) generating 0–100%
-> compatibility scores, and a salary prediction engine based on experience and skill parameters.
-> Built secure REST APIs with Spring Security + JWT, consumed by a React frontend using Axios.
-> Used Hibernate ORM with MySQL for data persistence and MVC pattern for clean code architecture.
